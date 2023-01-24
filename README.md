@@ -103,15 +103,66 @@ Q(t+1)=T′Q(t)+TQ(t)′
 
 ### Procedure
 /* write all the steps invloved */
+1.Using nand gates and wires construct sr flip flop.
 
+2.Repeat same steps to construct JK,D,T flipflops.
+
+3.Find Rtl logic and timing diagram for all flipflops.
+
+4.End the program.
 
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by:P.Jeba Princy
+RegisterNumber:2200375  
 */
+
+program 1:
+module flipflop(S,R,clock,Q,Qbar);
+input S,R,clock;
+output Q,Qbar;
+wire X,Y;
+nand(X,S,clock);
+nand(Y,R,clock);
+nand(Q,X,Qbar);
+nand(Qbar,Y,Q);
+endmodule
+
+program 2:
+module df(D,clock,Q,Qbar);
+input D,clock;
+output Q,Qbar;
+assign Dbar = ~D;
+wire X,Y;
+nand(X,D,clock);
+nand(Y,Dbar,clock);
+nand(Q,X,Qbar);
+nand(Qbar,Y,Q);
+endmodule
+
+program 3:
+module exp5(J,K,clock,Q,Qbar);
+input J,K,clock;
+output Q,Qbar;
+wire P,S;
+nand(P,J,clock,Qbar);
+nand(S,K,clock,Q);
+nand(Q,P,Qbar);
+nand(Qbar,S,Q);
+endmodule
+
+program 4:
+module tb(T,clock,Q,Qbar);
+input T,clock;
+output Q,Qbar;
+wire A,B;
+nand(A,T,clock,Qbar);
+nand(B,T,clock,Q);
+nand(Q,A,Qbar);
+nand(Qbar,B,Q);
+endmodule
 
 
 
@@ -119,6 +170,17 @@ RegisterNumber:
 
 
 ### RTL LOGIC FOR FLIPFLOPS 
+RTL 1
+![image](https://user-images.githubusercontent.com/122682918/214330145-e59b6b99-7aa7-4318-af66-60a75b1ab0cd.png)
+
+RTL 2
+![image](https://user-images.githubusercontent.com/122682918/214330495-b8269388-e1a8-4e64-8db5-208e101d5af9.png)
+
+RTL 3
+![image](https://user-images.githubusercontent.com/122682918/214330688-d8f9e228-7563-45bc-8035-c66c42b64abc.png)
+
+RTL 4
+![image](https://user-images.githubusercontent.com/122682918/214330844-a1700c2d-94a5-4f62-b2f7-c3755d7e5dca.png)
 
 
 
@@ -129,6 +191,13 @@ RegisterNumber:
 
 
 ### TIMING DIGRAMS FOR FLIP FLOPS 
+![image](https://user-images.githubusercontent.com/122682918/214331462-c1b1de51-ccb5-4f4a-ac3a-5adeed41c05c.png)
+![image](https://user-images.githubusercontent.com/122682918/214331700-c63ae32b-5c81-41a8-868d-3fa263584c14.png)
+![image](https://user-images.githubusercontent.com/122682918/214331827-1a391921-6009-49b6-bb61-75822864ca65.png)
+![image](https://user-images.githubusercontent.com/122682918/214331996-d64a5eb0-cd0a-4b4b-802c-22e8f9c72283.png)
+
+
+
 
 
 
@@ -138,3 +207,4 @@ RegisterNumber:
 
 
 ### RESULTS 
+Thus,all the flipflops was successfully implemented
